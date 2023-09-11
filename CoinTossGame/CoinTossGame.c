@@ -26,5 +26,22 @@ void main(void) // void(없는)
 // 함수 정의: 출력자료형 함수명(입력 선언, ...) {...}
 enum CoinType inputCoin(void)
 {
-	return CT_NULL;
+	puts("동전 앞면(F)이나 뒷면(B)을 선택하세요."); // 문자열(string) 출력
+	printf("당신의 선택은? ");
+	char cInput = _getche(); // e: echo(반향)
+	if (cInput == 'F' || cInput == 'f')
+	{
+		puts("\n앞면을 선택했습니다.");
+		return CT_FRONT;
+	}
+	else if (cInput == 'B' || cInput == 'b')
+	{
+		puts("\n뒷면을 선택했습니다.");
+		return CT_BACK;
+	}
+	else
+	{
+		puts("\n잘못 입력했습니다.");
+		return CT_NULL;
+	}
 }
