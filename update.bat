@@ -1,4 +1,4 @@
 chcp 65001
 git add --all
-git commit -m "TimesTable.h 추가"
+git commit -m "namespace 사용법"
 git push -u origin master
