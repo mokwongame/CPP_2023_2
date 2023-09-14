@@ -1,5 +1,14 @@
 #include <stdio.h> // printf() 선언
 
+void printTimesTable(int i)
+{
+	printf("[%d단 출력]\n", i);
+	for (int j = 1; j <= 9; j++)
+	{
+		printf("%d x %d = %d\n", i, j, i * j);
+	}
+}
+
 // 구구단(times table, multiplication table) 출력
 void main(void)
 {
@@ -8,12 +17,12 @@ void main(void)
 	// for (초기값; 판별식; 증감) {...}
 	for (int i = 1; i <= 9; i++)
 	{
-		printf("[%d단 출력]\n", i);
+		/*printf("[%d단 출력]\n", i);
 		for (int j = 1; j <= 9; j++)
 		{
 			printf("%d x %d = %d\n", i, j, i * j);
-		}
+		}*/
+		printTimesTable(i);
 		printf("\n");
 	}
-
 }
