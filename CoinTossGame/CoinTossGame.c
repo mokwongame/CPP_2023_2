@@ -10,17 +10,26 @@
 
 // 상수 나열(enumeration): enum 상수나열명 {상수 선언};
 enum CoinType
-{CT_BACK=0, CT_FRONT, CT_NULL}; // CT_FRONT=1, CT_NULL=2
+{
+	CT_BACK = 0, CT_FRONT, CT_NULL
+}; // CT_FRONT=1, CT_NULL=2
 
 // 함수 선언(헤더 파일) -> 함수 정의(소스 파일)
 enum CoinType inputCoin(void);
+enum CoinType randCoin(void);
 
 // 출력자료형 함수명(입력 선언, ...) {...}
 void main(void) // void(없는)
 {
 	randseed(); // 난수 초기화; LibGameTool.h에 정의
-	// 자료형 변수명 = 초기값;
-	enum CoinType nInput = inputCoin(); // =: 할당 연산자(오른쪽 값 -> 왼쪽 변수에 할당)
+	while (1) // 참, 거짓 판단: 0인지 아닌지 판단
+	{
+		// 자료형 변수명 = 초기값;
+		enum CoinType nInput = inputCoin(); // =: 할당 연산자(오른쪽 값 -> 왼쪽 변수에 할당)
+		if (nInput == CT_NULL) continue; // continue: 반복문의 처음으로 돌아가기
+		// 동전 던지기: 난수 발생
+		enum CoinType nRand = randCoin();
+	}
 }
 
 // 함수 정의: 출력자료형 함수명(입력 선언, ...) {...}
@@ -44,4 +53,16 @@ enum CoinType inputCoin(void)
 		puts("\n잘못 입력했습니다.");
 		return CT_NULL;
 	}
+}
+
+enum CoinType randCoin(void)
+{
+	puts("아무 키나 누르면 동전을 던집니다.");
+	_getch(); // 글자 한 자(char) 입력; echo X
+	int nRand = randrange(0, 2); // (0, 2-1) 범위에서 정수 난수 발생
+	enum CoinType nRandCoin = (enum CoinType)nRand;
+	if (nRandCoin == CT_BACK)
+		puts("나온 동전은 뒷면입니다.");
+	else puts("나온 동전은 앞면입니다.");
+	return nRandCoin;
 }
