@@ -127,9 +127,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="CoinTossGame.c" />
+    <ClCompile Include="CoinTossGame.c">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="CoinTossGame.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CoinTossGame.h" />
     <ClInclude Include="LibConsole.h" />
     <ClInclude Include="LibGameTool.h" />
   </ItemGroup>
