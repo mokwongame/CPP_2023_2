@@ -14,9 +14,13 @@ enum CoinType
 	CT_BACK = 0, CT_FRONT, CT_NULL
 }; // CT_FRONT=1, CT_NULL=2
 
+// 전역 변수 선언: {...} 바깥에 있는 변수 선언
+int nTotalScore = 0;
+
 // 함수 선언(헤더 파일) -> 함수 정의(소스 파일)
 enum CoinType inputCoin(void);
 enum CoinType randCoin(void);
+void checkCoin(enum CoinType nInput, enum CoinType nRand);
 
 // 출력자료형 함수명(입력 선언, ...) {...}
 void main(void) // void(없는)
@@ -29,15 +33,19 @@ void main(void) // void(없는)
 		if (nInput == CT_NULL) continue; // continue: 반복문의 처음으로 돌아가기
 		// 동전 던지기: 난수 발생
 		enum CoinType nRand = randCoin();
+		checkCoin(nInput, nRand);
 	}
 }
 
 // 함수 정의: 출력자료형 함수명(입력 선언, ...) {...}
 enum CoinType inputCoin(void)
 {
+	settextcol(GREEN);
 	puts("동전 앞면(F)이나 뒷면(B)을 선택하세요."); // 문자열(string) 출력
+	settextcol(WHITE);
 	printf("당신의 선택은? ");
 	char cInput = _getche(); // e: echo(반향)
+	settextcol(GREEN);
 	if (cInput == 'F' || cInput == 'f')
 	{
 		puts("\n앞면을 선택했습니다.");
@@ -50,6 +58,7 @@ enum CoinType inputCoin(void)
 	}
 	else
 	{
+		settextcol(RED);
 		puts("\n잘못 입력했습니다.");
 		return CT_NULL;
 	}
@@ -57,12 +66,32 @@ enum CoinType inputCoin(void)
 
 enum CoinType randCoin(void)
 {
+	settextcol(BLUE);
 	puts("아무 키나 누르면 동전을 던집니다.");
 	_getch(); // 글자 한 자(char) 입력; echo X
 	int nRand = randrange(0, 2); // (0, 2-1) 범위에서 정수 난수 발생
 	enum CoinType nRandCoin = (enum CoinType)nRand;
+	settextcol(GREEN);
 	if (nRandCoin == CT_BACK)
 		puts("나온 동전은 뒷면입니다.");
 	else puts("나온 동전은 앞면입니다.");
 	return nRandCoin;
+}
+
+void checkCoin(enum CoinType nInput, enum CoinType nRand)
+{
+	if (nInput == nRand)
+	{
+		settextcol(RED);
+		puts("잘 했습니다. 동전을 맞추었습니다.");
+		nTotalScore++;
+	}
+	else // CoinType이 다름
+	{
+		settextcol(BLUE);
+		puts("아쉽네요. 동전 선택이 틀렸습니다.");
+		nTotalScore--;
+	}
+	settextcol(YELLOW);
+	printf("현재 스코어는 %d입니다.\n\n", nTotalScore);
 }
