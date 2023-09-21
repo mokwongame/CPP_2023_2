@@ -2,13 +2,16 @@
 
 //#include <stdio.h> // printf() 선언
 #include <iostream>
+#include "LibConsole.hpp" // GitHub에서 LibConsole.h(C 언어용)와 LibConsole.hpp(h++: C++ 언어용)를 미리 다운로드
 
 // namespace namespace명 {...}
-namespace mglib
+namespace timesTableDisplay
 {
 	// inline(인라인): 함수 정의를 #define(매크로)처럼 사용 가능; 일반 함수 정의보다 실행 파일 크기는 커지지만 실행 속도가 빨라짐(코드 블록을 교체하기 때문)
 	inline void printTimesTable(int i, int jMax)
 	{
+		using namespace mglib;
+		settextcol(RED); // 출력하는 글자색을 RED로 변경
 		using namespace std;
 		//printf("[%d단 출력]\n", i);
 		cout << '[' << i << "단 출력]" << endl;
