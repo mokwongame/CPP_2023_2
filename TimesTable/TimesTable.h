@@ -32,4 +32,14 @@ namespace timesTableDisplay
 			cout << endl;
 		}
 	}
+
+	inline void printLogo(void)
+	{
+		using namespace mglib;
+		using namespace std;
+		settextcol(YELLOW);
+		cout << "===========" << endl;
+		cout << "Times Table Display" << endl;
+		cout << "===========" << endl;
+	}
 }
