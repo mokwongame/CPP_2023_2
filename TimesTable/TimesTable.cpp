@@ -14,9 +14,9 @@ int main()
 
 	// cout: console output, wcout: wide char(Unicode) cout
 	// std: namespace(이름 공간) standard(표준)
-	std::cout << "Hello World!\n";
+	std::cout << "Hello World!" << std::endl; // endl: end of line(엔터 키)
 
 	//std:: 대신 함수명/변수명을 그대로 쓰는 방법
 	using namespace std;
-	cout << "This is my first test.\n";
+	cout << "This is my first test." << endl;
 }
