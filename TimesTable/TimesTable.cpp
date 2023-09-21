@@ -25,4 +25,8 @@ int main()
 	cout << endl << "원하는 구구단의 최대 단수는? ";
 	int nTimesMax;
 	cin >> nTimesMax;
+	// 구구단 출력
+	// 고민: 단별로 색깔을 바꿀 때 WHITE(15)를 넘어가는 경우는?
+	cout << endl;
+	printAllTimesTable(nTimesMax);
 }

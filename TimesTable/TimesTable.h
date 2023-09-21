@@ -22,12 +22,12 @@ namespace timesTableDisplay
 		}
 	}
 
-	inline void printAllTimesTable(void)
+	inline void printAllTimesTable(int nTimesMax)
 	{
 		using namespace std;
-		for (int i = 1; i <= 9; i++)
+		for (int i = 1; i <= nTimesMax; i++)
 		{
-			printTimesTable(i, 20);
+			printTimesTable(i, nTimesMax);
 			//printf("\n");
 			cout << endl;
 		}
