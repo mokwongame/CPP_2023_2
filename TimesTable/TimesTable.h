@@ -11,7 +11,9 @@ namespace timesTableDisplay
 	inline void printTimesTable(int i, int jMax)
 	{
 		using namespace mglib;
-		settextcol(RED); // 출력하는 글자색을 RED로 변경
+		//int nColor = i % WHITE; // 0~14
+		int nColor = i % WHITE + 1; // 1~15
+		settextcol(nColor); // 출력하는 글자색을 RED로 변경
 		using namespace std;
 		//printf("[%d단 출력]\n", i);
 		cout << '[' << i << "단 출력]" << endl;

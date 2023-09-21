@@ -27,6 +27,7 @@ int main()
 	cin >> nTimesMax;
 	// 구구단 출력
 	// 고민: 단별로 색깔을 바꿀 때 WHITE(15)를 넘어가는 경우는?
+	// 해결책: WHITE로 나누는 나머지 연산(%)을 쓰면 결과 = 0 ~ 14; 최종 출력 색깔 범위는 1~15가 되게 함
 	cout << endl;
 	printAllTimesTable(nTimesMax);
 }
