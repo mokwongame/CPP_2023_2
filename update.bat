@@ -1,4 +1,4 @@
 chcp 65001
 git add --all
-git commit -m "CoinTossGame.h의 namespace 멤버 접근"
+git commit -m "cout으로 변수 출력, 동전 던지기 게임 개선"
 git push -u origin master
