@@ -16,12 +16,13 @@ int main(void) // void(없는); main() 함수의 return은 반드시 int
 	randseed(); // 난수 초기화; LibGameTool.h에 정의
 	while (1) // 참, 거짓 판단: 0인지 아닌지 판단
 	{
+		// namespace 멤버 접근: namespace명::멤버명
 		// 자료형 변수명 = 초기값;
-		CoinType nInput = inputCoin(); // =: 할당 연산자(오른쪽 값 -> 왼쪽 변수에 할당)
-		if (nInput == CT_NULL) continue; // continue: 반복문의 처음으로 돌아가기
+		mglib::CoinType nInput = mglib::inputCoin(); // =: 할당 연산자(오른쪽 값 -> 왼쪽 변수에 할당)
+		if (nInput == mglib::CT_NULL) continue; // continue: 반복문의 처음으로 돌아가기
 		// 동전 던지기: 난수 발생
-		CoinType nRand = randCoin();
-		checkCoin(nInput, nRand);
+		mglib::CoinType nRand = mglib::randCoin();
+		mglib::checkCoin(nInput, nRand);
 	}
 	return 0;
 }
