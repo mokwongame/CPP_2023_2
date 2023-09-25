@@ -7,3 +7,5 @@ int mglib::nTotalScore = 0;
 // 1. 던진 회수 저장: int nTotalTry
 // 2. 이긴 회수 저장: int nTotalWin
 // 3. 승률: nTotalWin/(double)nTotalTry*100
+int mglib::nTotalTry = 0;
+int mglib::nTotalWin = 0;

@@ -18,6 +18,8 @@ namespace mglib
 	// 전역 변수 선언: {...} 바깥에 있는 변수 선언 -> 헤더 파일에 넣을 수 없음(소스 파일에 여러 번 include 되면 링커 에러 발생
 	// 외부(external) 변수로 선언
 	extern int nTotalScore; // int nTotalScore는 여기 선언되지 않고 다른 파일에 있음; 외부 변수는 선언할 때 초기화 불가능
+	extern int nTotalTry;
+	extern int nTotalWin;
 
 	// 함수 선언(헤더 파일) -> 함수 정의(소스 파일)
 	CoinType inputCoin(void); // enum CoinType -> CoinType (C++: 새로운 자료형처럼 사용)
@@ -68,6 +70,7 @@ namespace mglib
 		std::cout << "아무 키나 누르면 동전을 던집니다." << std::endl;
 		_getch(); // 글자 한 자(char) 입력; echo X
 		int nRand = randrange(0, 2); // (0, 2-1) 범위에서 정수 난수 발생
+		nTotalTry++; // 시도 회수를 하나 증가
 		CoinType nRandCoin = (CoinType)nRand; // type casting(형 선정)
 		settextcol(GREEN);
 		if (nRandCoin == CT_BACK)
@@ -76,6 +79,11 @@ namespace mglib
 		return nRandCoin;
 	}
 
+	inline double getWinRatio(void)
+	{
+		// 승률 계산
+		return 0.;
+	}
 	inline void checkCoin(CoinType nInput, CoinType nRand)
 	{
 		using namespace std;
@@ -84,6 +92,7 @@ namespace mglib
 			settextcol(RED);
 			cout << "잘 했습니다. 동전을 맞추었습니다." << endl;
 			nTotalScore++;
+			nTotalWin++; // 이긴 회수를 하나 증가
 		}
 		else // CoinType이 다름
 		{
@@ -93,5 +102,7 @@ namespace mglib
 		}
 		settextcol(YELLOW);
 		cout << "현재 스코어는 " << nTotalScore << "입니다." << endl << endl;
+		settextcol(DARK_BLUE);
+		cout << "현재 승률은 " << getWinRatio() << "%입니다." << endl << endl;
 	}
 }
