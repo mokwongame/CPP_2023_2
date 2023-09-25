@@ -24,6 +24,15 @@ namespace mglib
 	CoinType randCoin(void);
 	void checkCoin(enum CoinType nInput, enum CoinType nRand);
 
+	inline void showLogo(void)
+	{
+		using namespace std;
+		settextcol(RED);
+		cout << "============" << endl;
+		cout << " 동전 던지기 게임" << endl;
+		cout << " CHO, YH" << endl;
+		cout << "============" << endl << endl;
+	}
 	// 함수 정의: 출력자료형 함수명(입력 선언, ...) {...} -> 헤더 파일에는 함수 정의하면 안됨
 	// 인라인(inline) 함수: 헤더 파일에 함수 정의 가능
 	inline CoinType inputCoin(void)

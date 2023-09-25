@@ -21,6 +21,7 @@ int main(void) // void(없는); main() 함수의 return은 반드시 int
 	// main() 코드 블록에서만 적용
 	using namespace std; // std namespace 전체 사용
 	using namespace mglib; // mglib namespace 전체 사용; mglib:: 없이 멤버에 접근 가능
+	showLogo();
 	randseed(); // 난수 초기화; LibGameTool.h에 정의
 	while (1) // 참, 거짓 판단: 0인지 아닌지 판단
 	{
