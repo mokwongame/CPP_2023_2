@@ -82,7 +82,7 @@ namespace mglib
 	inline double getWinRatio(void)
 	{
 		// ½Â·ü °è»ê
-		return 0.;
+		return nTotalWin / (double)nTotalTry * 100.;
 	}
 	inline void checkCoin(CoinType nInput, CoinType nRand)
 	{
