@@ -1,5 +1,6 @@
 #pragma once
 
+#include <stdlib.h>
 #include <iostream>
 #include "LibConsole.hpp"
 
@@ -27,6 +28,10 @@ public: // public group(외부에서 접근 가능: C 언어의 구조체(struct)와 동일)
 	void printMenu(void);
 
 	int inputMenu(void); // 출력: 사용자의 메뉴 선택 번호
+	int inputTimesNum(void); // 출력: 원하는 단수
+	int inputMaxTimesNum(void); // 출력: 출력할 최대 단수
+
+	void exeMenu(int nMenu);
 
 private: // private group(외부에서 접근 불가능)
 };
@@ -88,4 +93,42 @@ inline int TimesTableGame::inputMenu(void)
 	int nMenu;
 	cin >> nMenu; // cin: console input(보통 키보드)
 	return nMenu;
+}
+
+inline int TimesTableGame::inputTimesNum(void)
+{
+	using namespace mglib;
+	using namespace std;
+	settextcol(WHITE);
+	cout << "출력하기 원하는 단수를 입력하세요. 단수는? ";
+	int nTimes;
+	cin >> nTimes; // cin: console input(보통 키보드)
+	return nTimes;
+}
+
+inline int TimesTableGame::inputMaxTimesNum(void)
+{
+	using namespace mglib;
+	using namespace std;
+	settextcol(WHITE);
+	cout << "출력할 최대 단수를 입력하세요. 단수는? ";
+	int nMaxTimes;
+	cin >> nMaxTimes; // cin: console input(보통 키보드)
+	return nMaxTimes;
+}
+
+inline void TimesTableGame::exeMenu(int nMenu)
+{
+	int nMaxTimes, nTimes;
+	switch (nMenu)
+	{
+	case 1: // 모든 구구단 출력
+		nMaxTimes = inputMaxTimesNum();
+		printAllTimesTable(nMaxTimes);
+		break;
+	case 2: // 원하는 단만 출력
+		nTimes = inputTimesNum();
+		printTimesTable(nTimes, __max(nTimes, 9));
+		break;
+	}
 }

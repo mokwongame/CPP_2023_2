@@ -20,7 +20,8 @@ int main(void)
 	timesTableGame.printMenu();
 	// 사용자 입력
 	int nMenu = timesTableGame.inputMenu();
-	cout << "입력한 번호: " << nMenu;
+	//cout << "입력한 번호: " << nMenu;
+	timesTableGame.exeMenu(nMenu);
 	return 0;
 	// 인스턴스가 파괴될 때는 소멸자 호출
 }
