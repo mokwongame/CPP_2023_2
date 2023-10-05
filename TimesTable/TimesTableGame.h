@@ -11,24 +11,28 @@ public: // public group(외부에서 접근 가능: C 언어의 구조체(struct)와 동일)
 	TimesTableGame(void)
 	{
 		using namespace std;
-		cout << "Constructor is called." << endl;
+		//cout << "Constructor is called." << endl;
 	}
 	// 소멸자, 파괴자(destructor): 클래스명 앞에 ~(not 의미)를 붙인 멤버 함수
 	~TimesTableGame()
 	{
 		using namespace std;
-		cout << "Destructor is called." << endl;
+		//cout << "Destructor is called." << endl;
 	}
 
 	// 메소드(method): 멤버 함수
 	void printTimesTable(int i, int jMax);
 	void printAllTimesTable(int nTimesMax);
 	void printLogo(void);
+	void printMenu(void);
+
+	int inputMenu(void); // 출력: 사용자의 메뉴 선택 번호
 
 private: // private group(외부에서 접근 불가능)
 };
 
 // 메소드 정의: 클래스의 멤버임을 명시하기 위해 콜론을 2개 사용
+// 클래스 정의에서 멤버 접근은 콜론(:) 2개
 inline void TimesTableGame::printTimesTable(int i, int jMax)
 {
 	using namespace mglib;
@@ -63,5 +67,25 @@ inline void TimesTableGame::printLogo(void)
 	settextcol(YELLOW);
 	cout << "===========" << endl;
 	cout << "Times Table Display" << endl;
-	cout << "===========" << endl;
+	cout << "===========" << endl << endl;
+}
+
+inline void TimesTableGame::printMenu(void)
+{
+	using namespace mglib;
+	using namespace std;
+	settextcol(RED);
+	cout << "1. 모든 구구단 출력" << endl;
+	cout << "2. 원하는 단만 출력" << endl;
+}
+
+inline int TimesTableGame::inputMenu(void)
+{
+	using namespace mglib;
+	using namespace std;
+	settextcol(WHITE);
+	cout << "원하는 번호를 선택하세요. 번호는? ";
+	int nMenu;
+	cin >> nMenu; // cin: console input(보통 키보드)
+	return nMenu;
 }

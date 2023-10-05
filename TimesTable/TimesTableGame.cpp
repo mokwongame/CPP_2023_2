@@ -11,9 +11,16 @@
 
 int main(void)
 {
+	using namespace std;
 	// 인스턴스 선언: 클래스명 인스턴스명(변수명);
 	// 이때 생성자가 호출
 	TimesTableGame timesTableGame;
+	timesTableGame.printLogo(); // 인스턴스의 멤버 접근은 점(.) 연산자
+	// 메뉴 출력
+	timesTableGame.printMenu();
+	// 사용자 입력
+	int nMenu = timesTableGame.inputMenu();
+	cout << "입력한 번호: " << nMenu;
 	return 0;
 	// 인스턴스가 파괴될 때는 소멸자 호출
 }
