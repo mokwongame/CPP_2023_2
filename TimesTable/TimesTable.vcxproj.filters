@@ -21,6 +21,9 @@
     <ClCompile Include="TimesTable.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="TimesTableGame.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TimesTable.h">
@@ -30,6 +33,9 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="LibConsole.hpp">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="TimesTableGame.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
