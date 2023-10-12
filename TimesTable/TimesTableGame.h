@@ -4,6 +4,8 @@
 #include <iostream>
 #include "LibConsole.hpp"
 
+#define DEF_TIMES_MAX	(9) // 구구단 출력의 디폴트 출력 단수
+
 // 원칙: 파일명은 클래스명은 같이(의무는 아니고 권고)
 class TimesTableGame // 코드 블록의 캡슐화
 {
@@ -31,6 +33,7 @@ public: // public group(외부에서 접근 가능: C 언어의 구조체(struct)와 동일)
 	int inputTimesNum(void); // 출력: 원하는 단수
 	int inputMaxTimesNum(void); // 출력: 출력할 최대 단수
 
+	void start(void);
 	void exeMenu(int nMenu);
 
 private: // private group(외부에서 접근 불가능)
@@ -59,7 +62,7 @@ inline void TimesTableGame::printAllTimesTable(int nTimesMax)
 	using namespace std;
 	for (int i = 1; i <= nTimesMax; i++)
 	{
-		printTimesTable(i, nTimesMax);
+		printTimesTable(i, __max(nTimesMax, DEF_TIMES_MAX));
 		//printf("\n");
 		cout << endl;
 	}
@@ -117,6 +120,19 @@ inline int TimesTableGame::inputMaxTimesNum(void)
 	return nMaxTimes;
 }
 
+inline void TimesTableGame::start(void)
+{
+	while (1)
+	{
+		// 메뉴 출력
+		printMenu();
+		// 사용자 입력
+		int nMenu = inputMenu();
+		//cout << "입력한 번호: " << nMenu;
+		exeMenu(nMenu);
+	}
+}
+
 inline void TimesTableGame::exeMenu(int nMenu)
 {
 	int nMaxTimes, nTimes;
@@ -128,7 +144,7 @@ inline void TimesTableGame::exeMenu(int nMenu)
 		break;
 	case 2: // 원하는 단만 출력
 		nTimes = inputTimesNum();
-		printTimesTable(nTimes, __max(nTimes, 9));
+		printTimesTable(nTimes, __max(nTimes, DEF_TIMES_MAX));
 		break;
 	}
 }
