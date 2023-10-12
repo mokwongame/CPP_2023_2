@@ -3,7 +3,8 @@
 #include <stdlib.h>
 #include <iostream>
 #include <string> // C++의 표준 라이브러리: C++의 표준 문자열(string)은 string; string은 namespace std에 정의됨
-#include "LibConsole.hpp"
+#include "LibConsole.hpp" // 콘솔 출력 색깔 선택
+#include "LibGameTool.hpp" // 난수 처리 기능
 
 #define DEF_TIMES_MAX	(9) // 구구단 출력의 디폴트 출력 단수
 
@@ -15,7 +16,9 @@ public: // public group(외부에서 접근 가능: C 언어의 구조체(struct)와 동일)
 	TimesTableGame(void)
 	{
 		using namespace std;
+		using namespace mglib;
 		//cout << "Constructor is called." << endl;
+		randseed(); // 난수 초기화
 	}
 	// 소멸자, 파괴자(destructor): 클래스명 앞에 ~(not 의미)를 붙인 멤버 함수
 	~TimesTableGame()
@@ -41,6 +44,7 @@ public: // public group(외부에서 접근 가능: C 언어의 구조체(struct)와 동일)
 	void exeMenu(int nMenu);
 
 private: // private group(외부에서 접근 불가능)
+	void playTimesTable(int nTimes);
 };
 
 // 메소드 정의: 클래스의 멤버임을 명시하기 위해 콜론을 2개 사용
@@ -147,10 +151,12 @@ inline void TimesTableGame::start(void)
 
 inline void TimesTableGame::startGame(void)
 {
+	using namespace std;
 	int nTimes = inputGameTimesNum();
+	cout << endl;
 	while (1)
 	{
-
+		playTimesTable(nTimes);
 	}
 }
 
@@ -171,4 +177,17 @@ inline void TimesTableGame::exeMenu(int nMenu)
 		startGame();
 		break;
 	}
+}
+
+inline void TimesTableGame::playTimesTable(int iTimes)
+{
+	using namespace std;
+	using namespace mglib;
+	int jTimes = randrange(1, iTimes + 1); // 1, 2, ..., nTimes까지 정수 난수 발생
+	settextcol(GREEN);
+	cout << iTimes << " x " << jTimes << " = ?" << endl;
+	settextcol(WHITE);
+	cout << "답은 ?";
+	int nAns;
+	cin >> nAns;
 }
