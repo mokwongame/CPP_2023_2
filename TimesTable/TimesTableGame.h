@@ -2,6 +2,7 @@
 
 #include <stdlib.h>
 #include <iostream>
+#include <string> // C++의 표준 라이브러리: C++의 표준 문자열(string)은 string; string은 namespace std에 정의됨
 #include "LibConsole.hpp"
 
 #define DEF_TIMES_MAX	(9) // 구구단 출력의 디폴트 출력 단수
@@ -30,10 +31,13 @@ public: // public group(외부에서 접근 가능: C 언어의 구조체(struct)와 동일)
 	void printMenu(void);
 
 	int inputMenu(void); // 출력: 사용자의 메뉴 선택 번호
+	int inputInt(const std::string& sInput); // 정수 입력: sInput은 입력시 출력할 문장
 	int inputTimesNum(void); // 출력: 원하는 단수
 	int inputMaxTimesNum(void); // 출력: 출력할 최대 단수
+	int inputGameTimesNum(void); // 출력: 원하는 단수
 
 	void start(void);
+	void startGame(void);
 	void exeMenu(int nMenu);
 
 private: // private group(외부에서 접근 불가능)
@@ -55,6 +59,7 @@ inline void TimesTableGame::printTimesTable(int i, int jMax)
 		//printf("%d x %d = %d\n", i, j, i * j);
 		cout << i << " x " << j << " = " << i * j << endl;
 	}
+	cout << endl;
 }
 
 inline void TimesTableGame::printAllTimesTable(int nTimesMax)
@@ -85,6 +90,7 @@ inline void TimesTableGame::printMenu(void)
 	settextcol(RED);
 	cout << "1. 모든 구구단 출력" << endl;
 	cout << "2. 원하는 단만 출력" << endl;
+	cout << "3. 구구단 게임" << endl;
 }
 
 inline int TimesTableGame::inputMenu(void)
@@ -98,26 +104,32 @@ inline int TimesTableGame::inputMenu(void)
 	return nMenu;
 }
 
-inline int TimesTableGame::inputTimesNum(void)
+// Reference(참조자): 변수를 접근할 때 원본의 참조 위치를 사용; 자료형 뒤 &를 기호 사용; 원본은 그대로 이고 참조 위치로만 접근
+// const: 상수 의미; sInput을 inputInt()에서 바꾸지 않음
+inline int TimesTableGame::inputInt(const std::string& sInput)
 {
 	using namespace mglib;
 	using namespace std;
 	settextcol(WHITE);
-	cout << "출력하기 원하는 단수를 입력하세요. 단수는? ";
-	int nTimes;
-	cin >> nTimes; // cin: console input(보통 키보드)
-	return nTimes;
+	cout << sInput;
+	int nInput;
+	cin >> nInput; // cin: console input(보통 키보드)
+	return nInput;
+}
+
+inline int TimesTableGame::inputTimesNum(void)
+{
+	return inputInt("출력하기 원하는 단수를 입력하세요. 단수는? ");
 }
 
 inline int TimesTableGame::inputMaxTimesNum(void)
 {
-	using namespace mglib;
-	using namespace std;
-	settextcol(WHITE);
-	cout << "출력할 최대 단수를 입력하세요. 단수는? ";
-	int nMaxTimes;
-	cin >> nMaxTimes; // cin: console input(보통 키보드)
-	return nMaxTimes;
+	return inputInt("출력할 최대 단수를 입력하세요. 단수는? ");
+}
+
+inline int TimesTableGame::inputGameTimesNum(void)
+{
+	return inputInt("구구단을 연습할 단수를 입력하세요. 단수는? ");
 }
 
 inline void TimesTableGame::start(void)
@@ -133,6 +145,15 @@ inline void TimesTableGame::start(void)
 	}
 }
 
+inline void TimesTableGame::startGame(void)
+{
+	int nTimes = inputGameTimesNum();
+	while (1)
+	{
+
+	}
+}
+
 inline void TimesTableGame::exeMenu(int nMenu)
 {
 	int nMaxTimes, nTimes;
@@ -145,6 +166,9 @@ inline void TimesTableGame::exeMenu(int nMenu)
 	case 2: // 원하는 단만 출력
 		nTimes = inputTimesNum();
 		printTimesTable(nTimes, __max(nTimes, DEF_TIMES_MAX));
+		break;
+	case 3: // 구구단 게임
+		startGame();
 		break;
 	}
 }
