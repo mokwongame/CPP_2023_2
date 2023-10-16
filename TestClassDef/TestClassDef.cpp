@@ -14,7 +14,8 @@ int main()
 	// 인스턴스(instance == example): 클래스를 사용할 수 있는 상태로 선언이나 정의된 형태
 	// 변수 선언과 비슷하게 클래스 선언, 인스턴스 생성
 	MyCircle myCircle; // 클래스명 == 자료형, 인스턴스명 == 변수명; 인스턴스명은 보통 소문자로 시작
-	// 멤버 접근: . 점 연산자 사용(구조체와 비슷)
-	cout << "rad = " << myCircle.m_rad;
-	cout << "x = " << myCircle.m_x; // m_x는 private 멤버
+	// 인스턴스의 멤버 접근: . 점 연산자 사용(구조체와 비슷)
+	myCircle.setRad(1.2);
+	myCircle.setCenter(-2., 4.);
+	myCircle.print();
 }

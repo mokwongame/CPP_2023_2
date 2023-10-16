@@ -127,6 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="MyCircle.cpp" />
     <ClCompile Include="TestClassDef.cpp" />
   </ItemGroup>
   <ItemGroup>
