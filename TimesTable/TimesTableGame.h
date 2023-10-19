@@ -50,6 +50,7 @@ public: // public group(외부에서 접근 가능: C 언어의 구조체(struct)와 동일)
 
 private: // private group(외부에서 접근 불가능)
 	void playTimesTable(int nTimes);
+	void updateScore(bool bCorrect, int nCorrectAns);
 };
 
 // 메소드 정의: 클래스의 멤버임을 명시하기 위해 콜론을 2개 사용
@@ -200,4 +201,25 @@ inline void TimesTableGame::playTimesTable(int iTimes)
 	cout << "답은 ?";
 	int nAns;
 	cin >> nAns;
+
+	int nCorrectAns = (nOp == OpType::OT_MUL) ? nResult : jTimes; // 조건문용 삼항 연산자
+	bool bCorrect = (nAns == nCorrectAns); // bool 자료형: true, false만 가능
+	updateScore(bCorrect, nCorrectAns);
+}
+
+inline void TimesTableGame::updateScore(bool bCorrect, int nCorrectAns)
+{
+	using namespace std;
+	using namespace mglib;
+	if (bCorrect) // 맞은 경우
+	{
+		settextcol(RED);
+		cout << endl << "정답입니다." << endl << endl;
+	}
+	else // 틀린 경우
+	{
+		settextcol(BLUE);
+		cout << endl << "틀렸습니다." << endl;
+		cout << "정답은 " << nCorrectAns << "입니다." << endl << endl;
+	}
 }
