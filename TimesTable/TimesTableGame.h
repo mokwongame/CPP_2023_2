@@ -204,6 +204,8 @@ inline int TimesTableGame::getIntSafe(void)
 	using namespace std;
 	int nInput;
 	cin >> nInput; // 입력을 받을 때 정수가 아니면 에러 발생; 에러가 생기면 cin이 동작하지 않음
+	//bool bResult = (cin.rdstate() == ios::goodbit); // 개선된 에러 처리 방법
+	//if (!bResult) cout << endl << "입력 에러 발생" << endl;
 	cin.clear(); // 에러 생긴 상태를 없앰
 	cin.ignore(MAX_STREAM_SIZE, '\n'); // 만 개 문자를 무시; 엔더를 만나면 무시 종료
 	// 에러가 생기면 nInput = 0이 실행됨
