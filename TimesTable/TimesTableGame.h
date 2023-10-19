@@ -8,6 +8,7 @@
 #include "LibGameTool.hpp" // 난수 처리 기능
 
 #define DEF_TIMES_MAX	(9) // 구구단 출력의 디폴트 출력 단수
+#define MAX_STREAM_SIZE	(10000) // 스트림 입출력을 할 때 처리하는 최대 문자 수
 //enum OpType // C 언어: 열거형 상수 정의
 enum class OpType // C++ 언어: 열거형 클래스 정의(내부에 멤버 상수가 있음); 내부에 정의한 상수가 다른 코드 블록과 잘 겹치지 않음
 {
@@ -56,7 +57,8 @@ private: // private group(외부에서 접근 불가능)
 	double m_totalCalcTime = 0.;
 
 	// private method(멤버 함수)
-	void playTimesTable(int nTimes);
+	int getIntSafe(void);
+	bool playTimesTable(int nTimes); // true: 계속 실행; false: 게임을 종료
 	void updateScore(bool bCorrect, int nCorrectAns, double calcTime);
 };
 
@@ -169,7 +171,12 @@ inline void TimesTableGame::startGame(void)
 	cout << endl;
 	while (1)
 	{
-		playTimesTable(nTimes);
+		bool bResult = playTimesTable(nTimes);
+		if (!bResult)
+		{
+			cout << endl << "게임을 종료합니다." << endl << endl;
+			break; // 반복문 종료 키워드
+		}
 	}
 }
 
@@ -192,7 +199,18 @@ inline void TimesTableGame::exeMenu(int nMenu)
 	}
 }
 
-inline void TimesTableGame::playTimesTable(int iTimes)
+inline int TimesTableGame::getIntSafe(void)
+{
+	using namespace std;
+	int nInput;
+	cin >> nInput; // 입력을 받을 때 정수가 아니면 에러 발생; 에러가 생기면 cin이 동작하지 않음
+	cin.clear(); // 에러 생긴 상태를 없앰
+	cin.ignore(MAX_STREAM_SIZE, '\n'); // 만 개 문자를 무시; 엔더를 만나면 무시 종료
+	// 에러가 생기면 nInput = 0이 실행됨
+	return nInput;
+}
+
+inline bool TimesTableGame::playTimesTable(int iTimes)
 {
 	using namespace std;
 	using namespace mglib;
@@ -208,14 +226,17 @@ inline void TimesTableGame::playTimesTable(int iTimes)
 	cout << "답은 ?";
 	// 플레이어가 계산하는 부분
 	clock_t nBeginTime = clock(); // msec 단위로 현재 시간 계산(시간 측정의 출발점은 프로그램이 실행될 때); _t 붙인 이유: typedef으로 정의한 자료형을 강조
-	int nAns;
-	cin >> nAns;
+	//int nAns; cin >> nAns;
+	int nAns = getIntSafe();
 	clock_t nEndTime = clock();
 	double calcTime = (nEndTime - nBeginTime) / double(CLOCKS_PER_SEC); // 경과한 시간(계산 시간)
+	if (nAns == 0) // 에러가 발생해 종료
+		return false;
 
 	int nCorrectAns = (nOp == OpType::OT_MUL) ? nResult : jTimes; // 조건문용 삼항 연산자
 	bool bCorrect = (nAns == nCorrectAns); // bool 자료형: true, false만 가능
 	updateScore(bCorrect, nCorrectAns, calcTime);
+	return true;
 }
 
 inline void TimesTableGame::updateScore(bool bCorrect, int nCorrectAns, double calcTime)
