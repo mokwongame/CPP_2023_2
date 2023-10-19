@@ -1,6 +1,7 @@
 #pragma once
 
 #include <stdlib.h>
+#include <time.h>
 #include <iostream>
 #include <string> // C++의 표준 라이브러리: C++의 표준 문자열(string)은 string; string은 namespace std에 정의됨
 #include "LibConsole.hpp" // 콘솔 출력 색깔 선택
@@ -52,10 +53,11 @@ private: // private group(외부에서 접근 불가능)
 	// private property(멤버 변수)
 	int m_nNumCalc = 0;
 	int m_nCorrectCalc = 0;
+	double m_totalCalcTime = 0.;
 
 	// private method(멤버 함수)
 	void playTimesTable(int nTimes);
-	void updateScore(bool bCorrect, int nCorrectAns);
+	void updateScore(bool bCorrect, int nCorrectAns, double calcTime);
 };
 
 // 메소드 정의: 클래스의 멤버임을 명시하기 위해 콜론을 2개 사용
@@ -204,15 +206,19 @@ inline void TimesTableGame::playTimesTable(int iTimes)
 	else cout << iTimes << " x ? = " << nResult << endl;
 	settextcol(WHITE);
 	cout << "답은 ?";
+	// 플레이어가 계산하는 부분
+	clock_t nBeginTime = clock(); // msec 단위로 현재 시간 계산(시간 측정의 출발점은 프로그램이 실행될 때); _t 붙인 이유: typedef으로 정의한 자료형을 강조
 	int nAns;
 	cin >> nAns;
+	clock_t nEndTime = clock();
+	double calcTime = (nEndTime - nBeginTime) / double(CLOCKS_PER_SEC); // 경과한 시간(계산 시간)
 
 	int nCorrectAns = (nOp == OpType::OT_MUL) ? nResult : jTimes; // 조건문용 삼항 연산자
 	bool bCorrect = (nAns == nCorrectAns); // bool 자료형: true, false만 가능
-	updateScore(bCorrect, nCorrectAns);
+	updateScore(bCorrect, nCorrectAns, calcTime);
 }
 
-inline void TimesTableGame::updateScore(bool bCorrect, int nCorrectAns)
+inline void TimesTableGame::updateScore(bool bCorrect, int nCorrectAns, double calcTime)
 {
 	using namespace std;
 	using namespace mglib;
@@ -220,8 +226,10 @@ inline void TimesTableGame::updateScore(bool bCorrect, int nCorrectAns)
 	if (bCorrect) // 맞은 경우
 	{
 		m_nCorrectCalc++;
+		m_totalCalcTime += calcTime;
 		settextcol(RED);
-		cout << endl << "정답입니다." << endl << endl;
+		cout << endl << "정답입니다." << endl;
+		cout << "계산 시간은 " << calcTime << "초입니다." << endl << endl;
 	}
 	else // 틀린 경우
 	{
@@ -231,5 +239,7 @@ inline void TimesTableGame::updateScore(bool bCorrect, int nCorrectAns)
 	}
 
 	double correctRatio = m_nCorrectCalc / double(m_nNumCalc) * 100.;
-	cout << "정답 비율: " << correctRatio << "%" << endl << endl;
+	double avgCalcTime = m_totalCalcTime / double(m_nCorrectCalc);
+	cout << "정답 비율: " << correctRatio << "%" << endl;
+	cout << "평균 계산 시간: " << avgCalcTime << "초" << endl << endl;
 }
