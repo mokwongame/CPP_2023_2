@@ -7,6 +7,11 @@
 #include "LibGameTool.hpp" // 난수 처리 기능
 
 #define DEF_TIMES_MAX	(9) // 구구단 출력의 디폴트 출력 단수
+//enum OpType // C 언어: 열거형 상수 정의
+enum class OpType // C++ 언어: 열거형 클래스 정의(내부에 멤버 상수가 있음); 내부에 정의한 상수가 다른 코드 블록과 잘 겹치지 않음
+{
+	OT_NULL = 0, OT_MUL, OT_DIV
+}; // OT_MUL == 1, OT_DIV == 2
 
 // 원칙: 파일명은 클래스명은 같이(의무는 아니고 권고)
 class TimesTableGame // 코드 블록의 캡슐화
@@ -183,9 +188,14 @@ inline void TimesTableGame::playTimesTable(int iTimes)
 {
 	using namespace std;
 	using namespace mglib;
-	int jTimes = randrange(1, iTimes + 1); // 1, 2, ..., nTimes까지 정수 난수 발생
+	int nMaxTimes = __max(iTimes, DEF_TIMES_MAX); // 9단 이하일 때는 난수를 9까지 나오도록 발생
+	int jTimes = randrange(1, nMaxTimes + 1); // 1, 2, ..., nTimes까지 정수 난수 발생
+	//int nOp = randrange(1, 2 + 1); // 1(곱셈), 2(나눗셈)에서 난수 발생
+	OpType nOp = OpType(randrange(int(OpType::OT_MUL), int(OpType::OT_DIV) + 1)); // 형 선정(type casting): int(), OpType()
+	int nResult = iTimes * jTimes;
 	settextcol(GREEN);
-	cout << iTimes << " x " << jTimes << " = ?" << endl;
+	if (nOp == OpType::OT_MUL) cout << iTimes << " x " << jTimes << " = ?" << endl;
+	else cout << iTimes << " x ? = " << nResult << endl;
 	settextcol(WHITE);
 	cout << "답은 ?";
 	int nAns;
