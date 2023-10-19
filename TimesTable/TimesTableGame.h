@@ -49,6 +49,11 @@ public: // public group(외부에서 접근 가능: C 언어의 구조체(struct)와 동일)
 	void exeMenu(int nMenu);
 
 private: // private group(외부에서 접근 불가능)
+	// private property(멤버 변수)
+	int m_nNumCalc = 0;
+	int m_nCorrectCalc = 0;
+
+	// private method(멤버 함수)
 	void playTimesTable(int nTimes);
 	void updateScore(bool bCorrect, int nCorrectAns);
 };
@@ -211,8 +216,10 @@ inline void TimesTableGame::updateScore(bool bCorrect, int nCorrectAns)
 {
 	using namespace std;
 	using namespace mglib;
+	m_nNumCalc++;
 	if (bCorrect) // 맞은 경우
 	{
+		m_nCorrectCalc++;
 		settextcol(RED);
 		cout << endl << "정답입니다." << endl << endl;
 	}
@@ -222,4 +229,7 @@ inline void TimesTableGame::updateScore(bool bCorrect, int nCorrectAns)
 		cout << endl << "틀렸습니다." << endl;
 		cout << "정답은 " << nCorrectAns << "입니다." << endl << endl;
 	}
+
+	double correctRatio = m_nCorrectCalc / double(m_nNumCalc) * 100.;
+	cout << "정답 비율: " << correctRatio << "%" << endl << endl;
 }
