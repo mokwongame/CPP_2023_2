@@ -9,10 +9,12 @@
 int main()
 {
 	using namespace std; // 아래부터는 std::을 쓸 필요 없음
+	using namespace mglib;
 	//cout << "Hello World!\n";
 
 	// 코드 블록 정의: 지역 변수는 이 코드 블록 내부에서만 사용되고 }를 만나면 소멸됨
 	{
+		settextcol(RED);
 		// 인스턴스(instance == example): 클래스를 사용할 수 있는 상태로 선언이나 정의된 형태
 		// 변수 선언과 비슷하게 클래스 선언, 인스턴스 생성
 		MyCircle myCircle; // 클래스명 == 자료형, 인스턴스명 == 변수명; 인스턴스명은 보통 소문자로 시작
@@ -25,5 +27,25 @@ int main()
 		myCircle.setCenter(5.); // x는 입력한 값 사용; y는 기본값 사용
 		myCircle.print();
 	} // 지역 변수인 인스턴스 myCircle이 소멸됨
+	{
+		gotoxy(0, 0); // 커서를 (x, y) = (0, 0) 지점으로 이동
+		settextcol(GREEN);
+		cout << endl << "====================" << endl << endl;
+		//MyCircle myCircle(1., -2., -3.);
+		MyCircle myCircle{ 1., -2., -3. };
+		myCircle.print();
+	}
+	{
+		settextcol(BLUE);
+		cout << endl << "====================" << endl << endl;
+		MyCircle myCircle(100.);
+		myCircle.print();
+	}
+	{
+		settextcol(YELLOW);
+		cout << endl << "====================" << endl << endl;
+		MyCircle myCircle(30., 40.);
+		myCircle.print();
+	}
 	cout << endl << "프로그램 종료" << endl;
 }

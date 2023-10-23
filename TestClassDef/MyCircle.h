@@ -1,6 +1,7 @@
 #pragma once // 이 헤더 파일을 한 번만(once) 잘(pragmatic) 포함시키라는 뜻
 
 #include <iostream>
+#include "LibConsole.hpp"
 
 // 파일명: MyCircle.h
 // 객체(object): 문제를 풀기 위한 코드 블록의 기본 구조
@@ -14,7 +15,24 @@ public: // public 그룹: 아래 있는 멤버는 모두 public
 	// 생성자(constructor): 메소드명 == 클래스명; 클래스가 생성될 때(인스턴스가 만들어질 때) 자동적으로 호출되는 메소드(멤버 함수); 반환하는 자료형은 쓸 수 없음; 클래스를 쓰기 위한 기본적인 초기화 실행
 	MyCircle(void)
 	{
-		std::cout << "생성자 호출" << std::endl;
+		std::cout << "생성자(void) 호출" << std::endl;
+	}
+	MyCircle(double rad, double x, double y)
+	{
+		std::cout << "생성자(rad, x, y) 호출" << std::endl;
+		setRad(rad); // m_rad = rad; 대신 메소드 호출(일관성 위해)
+		setCenter(x, y);
+	}
+	MyCircle(double rad) : // 생성자의 초기화 리스트
+		m_rad(rad) // m_rad = rad
+	{
+		std::cout << "생성자(rad) 호출" << std::endl;
+	}
+	MyCircle(double x, double y) : // 생성자의 초기화 리스트
+		m_x(x),
+		m_y(y)
+	{
+		std::cout << "생성자(x, y) 호출" << std::endl;
 	}
 	// 소멸자, 파괴자(destructor): 메소드명 == ~클래스명; 인스턴스가 소멸될 때 자동적으로 호출; 입력 자료형 X, 출력 자료형 X; 메모리 정리할 때 주로 사용
 	~MyCircle()
