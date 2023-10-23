@@ -9,13 +9,17 @@
 int main()
 {
 	using namespace std; // 아래부터는 std::을 쓸 필요 없음
-	cout << "Hello World!\n";
+	//cout << "Hello World!\n";
 
 	// 인스턴스(instance == example): 클래스를 사용할 수 있는 상태로 선언이나 정의된 형태
 	// 변수 선언과 비슷하게 클래스 선언, 인스턴스 생성
 	MyCircle myCircle; // 클래스명 == 자료형, 인스턴스명 == 변수명; 인스턴스명은 보통 소문자로 시작
 	// 인스턴스의 멤버 접근: . 점 연산자 사용(구조체와 비슷)
-	myCircle.setRad(1.2);
+	myCircle.setRad(1.2); // 입력이 double
+	myCircle.setRad(20);	// 입력이 int
+	myCircle.setRad();	// 입력이 없음 -> 기본값으로 설정
 	myCircle.setCenter(-2., 4.);
+	myCircle.setCenter();
+	myCircle.setCenter(5.); // x는 입력한 값 사용; y는 기본값 사용
 	myCircle.print();
 }
