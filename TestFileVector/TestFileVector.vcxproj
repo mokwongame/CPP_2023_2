@@ -142,10 +142,13 @@
     <ClCompile Include="TestFileVector.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="TestUserInfo.cpp" />
+    <ClCompile Include="TestUserInfo.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="TestVector.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="TestVectorUserInfo.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="UserInfo.h" />
