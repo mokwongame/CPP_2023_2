@@ -21,5 +21,13 @@
     <ClCompile Include="TestVector.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="TestUserInfo.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="UserInfo.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -22,4 +22,5 @@ int main()
 	cout << endl;
 	for (auto i : vec) cout << i << endl;
 	cout << "vec size = " << vec.size() << endl;
+	return 0;
 }
