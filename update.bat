@@ -1,4 +1,4 @@
 chcp 65001
 git add --all
-git commit -m "TestFileVector 프로젝트 추가"
+git commit -m "vector 자료 구조 연습"
 git push -u origin master
