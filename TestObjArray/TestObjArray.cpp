@@ -2,6 +2,7 @@
 //
 
 #include <iostream>
+#include "MyCircle.h"
 
 int main()
 {
@@ -25,6 +26,21 @@ int main()
 	{
 		int j = array[i];
 		cout << j << endl;
+	}
+	cout << endl;
+	// 객체 배열: 원소 접근은 레퍼런스(reference, 참조자) -> 포인터 역할인데 변수처럼 사용; 복사본 만들지 않고 원본에 참조 위치(참조자 이름)로 접근
+	// 참조자 사용법: 자료형 다음에 & 추가(구별: 변수명 앞에 붙은 &는 주소 가져오기 연산자(address of)
+	MyCircle circles[10]; // 클래스명 MyCircle을 자료형처럼 사용
+	//for (auto cir : circles) // 할당: circles 원소의 복사본을 cir에 할당(=)
+	for (auto& cir : circles) // 할당: circles 원소 원본의 참조자를  cir에 할당(=); 복사본을 만들지 않음
+	{
+		cir.setRad(5.); // 반지름을 5로 설정
+	}
+	// 객체 배열의 모든 원소 출력(print)
+	for (auto& cir : circles)
+	{
+		cir.print();
+		cout << endl << endl;
 	}
 }
 

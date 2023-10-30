@@ -1,4 +1,4 @@
 chcp 65001
 git add --all
-git commit -m "TestObjArray 프로젝트 추가"
+git commit -m "포인터와 레퍼런스 비교"
 git push -u origin master
