@@ -128,7 +128,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="MyCircle.cpp" />
-    <ClCompile Include="TestClassDef.cpp" />
+    <ClCompile Include="TestCircle.cpp" />
+    <ClCompile Include="TestClassDef.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MyCircle.h" />
