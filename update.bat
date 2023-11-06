@@ -1,4 +1,4 @@
 chcp 65001
 git add --all
-git commit -m "TestMemory 프로젝트 추가"
+git commit -m "string 클래스 사용법"
 git push -u origin master
