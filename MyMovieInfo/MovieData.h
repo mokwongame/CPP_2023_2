@@ -37,4 +37,13 @@ inline void MovieData::setData(std::string name, std::string gendre, double scor
 
 inline void MovieData::print(void) const
 {
+	using namespace std;
+	// 영화명, 개봉연도, 장르, 평점, 러닝타임, 출연진(1명), 감독(1명)
+	cout << "[" << m_name << "]" << endl;
+	cout << "개봉연도: " << m_year << endl;
+	cout << "장르: " << m_gendre << endl;
+	cout << "평점: " << m_score << "점" << endl;
+	cout << "러닝타임: " << m_times << "분" << endl;
+	cout << "주인공: " << m_actor << endl;
+	cout << "감독: " << m_director;
 }

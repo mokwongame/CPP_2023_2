@@ -17,5 +17,13 @@ int main()
 	using namespace std;
 	MyMovieInfo myMovieInfo; // MyMovieInfo는 클래스(설계도) 이름, myMovieInfo는 인스턴스(실체) 이름
 
-	cout << "Hello World!\n";
+	MovieData movieData;
+	// 영화명, 개봉연도, 장르, 평점, 러닝타임, 출연진(1명), 감독(1명)
+	movieData.setData("서울의봄", "드라마", 7.8, 2023, 141, "황정민", "김성수");
+	myMovieInfo.addData(movieData);
+
+	movieData.setData("헝거게임", "드라마", 7.8, 2023, 141, "황정민", "김성수");
+	myMovieInfo.addData(movieData);
+
+	myMovieInfo.print();
 }
