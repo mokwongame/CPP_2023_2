@@ -11,6 +11,7 @@ public:
 
 	void addData(const MovieData& movieData); // & 의미: moveData를 참조로 받음(복사본 없이 원본에 접근); const 의미: 현재 함수에서 movieData를 변경하지 않음
 	void print(void) const;
+	MovieData findDirector(const std::string director);
 
 private:
 	std::vector<MovieData> m_data;
@@ -30,4 +31,14 @@ inline void MyMovieInfo::print(void) const
 		std::cout << std::endl << std::endl;
 		//cout << endl << endl;
 	}
+}
+
+inline MovieData MyMovieInfo::findDirector(const std::string director)
+{
+	for (const auto& movieData : m_data)
+	{
+		if (movieData.getDirector() == director) // 검색 성공
+			return movieData;
+	}
+	return MovieData();
 }
