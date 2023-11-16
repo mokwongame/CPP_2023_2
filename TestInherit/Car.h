@@ -1,5 +1,6 @@
 #pragma once
 
+#include <vector>
 #include "Vehicle.h"
 
 // public 상속: 접근 권한은 원래대로
@@ -18,7 +19,10 @@ public:
 private:
 	int m_nGear = 0;
 	bool m_bBrake = true;
+
 protected:
+	// 브랜드, 가격, 최대속도
+	std::vector<std::string> m_brand; // 여러 브랜드를 저장하는 벡터 자료 구조; 원소는 문자열로 선택
 };
 
 inline std::ostream& operator<<(std::ostream& stream, const Car& car)
