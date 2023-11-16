@@ -7,9 +7,9 @@
 int main()
 {
 	using namespace std;
-	std::cout << "Hello World!\n";
-
 	Vehicle vehicle;
+	vehicle.setName("이동체");
 	vehicle.speedUp(100);
-	cout << vehicle.x << endl;
+	vehicle.speedDown(50);
+	cout << vehicle.getSpeed() << endl;
 }
