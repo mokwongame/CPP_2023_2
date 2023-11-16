@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include <iostream>
 
 // 매크로(macro) 정의
 #define DEF_SPEED_STEP	(10.)
@@ -64,6 +65,15 @@ protected: // protected 그룹
 	double m_x = 0.;
 	double m_y = 0.;
 };
+
+inline std::ostream& operator<<(std::ostream& stream, const Vehicle& vehicle)
+{
+	using namespace std;
+	stream << "[Vehicle: " << vehicle.getName() << "]" << endl;
+	stream << "속도 = " << vehicle.getSpeed() << " km/h" << endl;
+	stream << "현재 위치 = (" << vehicle.getPosX() << ", " << vehicle.getPosY() << ")";
+	return stream;
+}
 
 // #define을 해제(undefine)
 #undef DEF_SPEED_STEP

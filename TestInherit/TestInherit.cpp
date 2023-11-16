@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include "Vehicle.h"
+#include "Car.h"
 
 int main()
 {
@@ -11,5 +12,10 @@ int main()
 	vehicle.setName("이동체");
 	vehicle.speedUp(100);
 	vehicle.speedDown(50);
-	cout << vehicle.getSpeed() << endl;
+	cout << vehicle << endl;
+
+	Car car;
+	car.setName("자동차");
+	car.setSpeed(200);
+	cout << endl << car << endl;
 }
