@@ -9,13 +9,18 @@ public:
 	Dog(void)
 	{
 		m_food = "잡식성";
+		std::cout << "Dog 생성자" << std::endl;
 	}
-	~Dog() {}
+	~Dog()
+	{
+		std::cout << "Dog 소멸자" << std::endl;
+	}
 
 	// Animal에도 똑같은 메소드 선언(정의)이 있음: 메소드 재정의, 오버라이드(override)
 	void print(void) const;
 	// 메소드 중복, 오버로드(overload): 같은 이름 함수를 여러 개 정의(입력 변수는 달라야 함)
 	void print(const std::string& home);
+	virtual void speak(void) const { std::cout << "멍멍" << std::endl; }
 
 private:
 

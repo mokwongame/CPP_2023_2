@@ -4,17 +4,29 @@
 #include <iostream>
 #include "Animal.h"
 #include "Dog.h"
+#include "Cat.h"
+#include "Pig.h"
 
 int main()
 {
 	using namespace std;
 
-	Animal animal;
-	animal.setName("사자");
-	cout << animal.getName() << endl;
+	//Animal animal;
+	//animal.setName("사자");
+	//cout << animal.getName() << endl;
 
 	Dog dog;
 	dog.setName("멍멍이");
 	cout << endl << endl;
 	dog.print("한국");
+
+	//Cat cat;
+	//cat.setName("야옹이");
+	//cout << endl << endl;
+	//cat.print();
+
+	//Pig pig;
+	//pig.setName("꿀꿀이");
+	//cout << endl << endl;
+	//pig.print();
 }

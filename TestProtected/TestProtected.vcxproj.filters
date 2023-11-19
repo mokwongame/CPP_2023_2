@@ -18,12 +18,21 @@
     <ClCompile Include="TestProtected.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="TestVirtual.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animal.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Dog.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Cat.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Pig.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
