@@ -10,6 +10,12 @@ public:
 	{
 		setX(x);
 	}
+	// 복사 생성자
+	MyDouble(const MyDouble& myDouble)
+	{
+		m_x = myDouble.m_x;
+		m_step = myDouble.m_step;
+	}
 
 	double getX(void) const
 	{
@@ -19,6 +25,10 @@ public:
 	{
 		m_x = x;
 	}
+	void setStep(double step)
+	{
+		m_step = step;
+	}
 
 	MyDouble& operator=(const MyDouble& myDouble)
 	{
@@ -26,6 +36,22 @@ public:
 		m_step = myDouble.m_step;
 		// 현재 클래스(MyDouble)의 인스턴스 반환
 		return *this; // this는 현재 인스턴스의 포인터; *this: 포인터의 값 -> 현재 인스턴스
+	}
+	MyDouble& operator++(void)
+	{
+		m_x += m_step; // m_x = m_x + m_step;
+		return *this;
+	}
+	MyDouble operator++(int i) // i는 더미(dummy)
+	{
+		MyDouble tmp(*this); // 현재 인스턴스의 복사본을 tmp에 저장
+		m_x += m_step; // m_x = m_x + m_step;
+		return tmp;
+	}
+	MyDouble& operator--(void)
+	{
+		m_x -= m_step; // m_x = m_x + m_step;
+		return *this;
 	}
 
 private:
