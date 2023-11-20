@@ -1,0 +1,4 @@
+1. 헤더 파일 준비
+mokwongame > CPP_2023_2 > MgHead
+-> LibConsole.h, LibConsole.hpp
+-> LibGameTool.h, LibGameTool.hpp
