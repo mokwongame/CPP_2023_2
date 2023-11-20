@@ -22,7 +22,7 @@ int main()
 	movieData.setData("서울의봄", "드라마", 7.8, 2023, 141, "황정민", "김성수");
 	myMovieInfo.addData(movieData);
 
-	movieData.setData("헝거게임", "드라마", 7.8, 2023, 141, "황정민", "로렌스");
+	movieData.setData("헝거게임", "드라마", 10.8, 2023, 141, "황정민", "로렌스");
 	myMovieInfo.addData(movieData);
 
 	myMovieInfo.print();
@@ -32,4 +32,8 @@ int main()
 	MovieData movieDirector = myMovieInfo.findDirector(director);
 	cout << endl << "감독이 " << director << "인 영화" << endl;
 	movieDirector.print();
+
+	MovieData movieMaxScore = myMovieInfo.findMaxScore();
+	cout << endl << endl << "최대 평점인 영화" << endl;
+	movieMaxScore.print();
 }

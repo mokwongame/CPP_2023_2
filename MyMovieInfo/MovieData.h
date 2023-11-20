@@ -14,6 +14,10 @@ public:
 	{
 		return m_director;
 	}
+	double getScore(void) const
+	{
+		return m_score;
+	}
 	void setData(std::string name, std::string gendre, double score, int year, int times, std::string actor, std::string director);
 	void print(void) const; // const 의미: 이 메소드는 프로퍼티(변수)를 변경하지 않음; 상수로만 처리함
 

@@ -12,6 +12,7 @@ public:
 	void addData(const MovieData& movieData); // & 의미: moveData를 참조로 받음(복사본 없이 원본에 접근); const 의미: 현재 함수에서 movieData를 변경하지 않음
 	void print(void) const;
 	MovieData findDirector(const std::string director);
+	MovieData findMaxScore(void);
 
 private:
 	std::vector<MovieData> m_data;
@@ -41,4 +42,20 @@ inline MovieData MyMovieInfo::findDirector(const std::string director)
 			return movieData;
 	}
 	return MovieData();
+}
+
+inline MovieData MyMovieInfo::findMaxScore(void)
+{
+	double maxScore = 0.;
+	MovieData maxData;
+	for (const auto& movieData : m_data)
+	{
+		double score = movieData.getScore();
+		if (score > maxScore) // 최대값
+		{
+			maxScore = score; // 최대값 갱신
+			maxData = movieData;
+		}
+	}
+	return maxData;
 }
