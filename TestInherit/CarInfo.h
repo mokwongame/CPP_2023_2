@@ -18,6 +18,7 @@ public:
 	double getMaxSpeed(void) const {
 		return m_maxSpeed;
 	}
+	double getSpeed(int nGear) const;
 	void setParam(const std::string& brand, double price = 3000., double maxSpeed = 100.)
 	{
 		m_brand = brand;
@@ -30,6 +31,18 @@ private:
 	double m_price = 0.;
 	double m_maxSpeed = 0.;
 };
+
+inline double CarInfo::getSpeed(int nGear) const
+{
+	switch (nGear)
+	{
+	case 1: return m_maxSpeed * 0.25;
+	case 2: return m_maxSpeed * 0.5;
+	case 3: return m_maxSpeed * 0.75;
+	case 4: return m_maxSpeed;
+	default: return 0.;
+	}
+}
 
 inline std::ostream& operator<<(std::ostream& stream, const CarInfo& carInfo)
 {

@@ -14,6 +14,11 @@ public:
 	Car(void) {}
 	~Car() {}
 
+	int getGear(void) const { return m_nGear; }
+	void setGear(int nGear) { m_nGear = nGear; }
+
+	void printMaxSpeed(void) const;
+
 	// friend: 멤버 X, 내부 프로퍼티에 접근 가능한 메소드; 어떤 메소드든지 friend 선택 가능하지만 operator 중복에만 주로 사용
 	friend std::ostream& operator<<(std::ostream& stream, const Car& vehicle);
 
@@ -28,6 +33,19 @@ protected:
 	//std::vector<double> m_maxSpeed;
 	std::vector<CarInfo> m_carInfos;
 };
+
+inline void Car::printMaxSpeed(void) const
+{
+	using namespace std;
+	cout << "[현재 최고 속도]" << endl;
+	cout << "현재 기어 = " << m_nGear << "단" << endl;
+	cout << "---------------" << endl;
+	for (const auto& carInfo : m_carInfos)
+	{
+		cout << carInfo.getBrand() << "의 최고 속도 = " << carInfo.getSpeed(m_nGear) << "km/h" << endl;
+	}
+	cout << "---------------" << endl;
+}
 
 inline std::ostream& operator<<(std::ostream& stream, const Car& car)
 {

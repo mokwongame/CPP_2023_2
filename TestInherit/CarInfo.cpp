@@ -13,4 +13,22 @@ int main()
 	using namespace std;
 	Sedan sedan;
 	cout << sedan << endl;
+
+	cout << "기어(1~4)를 선택하세요: ";
+	int nGear = 0;
+	cin >> nGear;
+	if (!cin)
+	{
+		while (1)
+		{
+			cin.clear();
+			cin.ignore(1, '/n');
+			cout << "기어를 다시 선택하세요: ";
+			cin >> nGear;
+			if (nGear >= 1 && nGear <= 4) break;
+		}
+	}
+
+	sedan.setGear(nGear);
+	sedan.printMaxSpeed();
 }
