@@ -30,3 +30,12 @@ private:
 	double m_price = 0.;
 	double m_maxSpeed = 0.;
 };
+
+inline std::ostream& operator<<(std::ostream& stream, const CarInfo& carInfo)
+{
+	using namespace std;
+	stream << "브랜드 = " << carInfo.getBrand() << endl;
+	stream << "가격 = " << carInfo.getPrice() << "만원" << endl;
+	stream << "최고 속도 = " << carInfo.getMaxSpeed() << "km/h";
+	return stream;
+}
