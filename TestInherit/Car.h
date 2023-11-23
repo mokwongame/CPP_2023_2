@@ -2,6 +2,7 @@
 
 #include <vector>
 #include "Vehicle.h"
+#include "CarInfo.h"
 
 // public 상속: 접근 권한은 원래대로
 // protected 상속: public  멤버 -> protected 멤버로 변경; 나머지는 그대로
@@ -22,7 +23,10 @@ private:
 
 protected:
 	// 브랜드, 가격, 최대속도
-	std::vector<std::string> m_brand; // 여러 브랜드를 저장하는 벡터 자료 구조; 원소는 문자열로 선택
+	//std::vector<std::string> m_brand; // 여러 브랜드를 저장하는 벡터 자료 구조; 원소는 문자열로 선택
+	//std::vector<double> m_price;
+	//std::vector<double> m_maxSpeed;
+	std::vector<CarInfo> m_carInfos;
 };
 
 inline std::ostream& operator<<(std::ostream& stream, const Car& car)

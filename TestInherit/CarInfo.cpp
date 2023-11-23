@@ -10,5 +10,7 @@
 
 int main()
 {
+	using namespace std;
 	Sedan sedan;
+	cout << sedan << endl;
 }

@@ -146,6 +146,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Car.h" />
+    <ClInclude Include="CarInfo.h" />
     <ClInclude Include="Sedan.h" />
     <ClInclude Include="Vehicle.h" />
   </ItemGroup>
