@@ -130,6 +130,7 @@
     <ClCompile Include="MyInherit.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Family.h" />
     <ClInclude Include="Person.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

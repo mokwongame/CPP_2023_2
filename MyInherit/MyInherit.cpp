@@ -8,6 +8,7 @@
 */
 #include <iostream>
 #include "Person.h"
+#include "Family.h"
 
 // 먼저 부모 클래스부터 코딩
 // 그 다음에 자식 클래스 코딩
@@ -17,4 +18,9 @@ int main()
 	Person person;
 	person.setName("홍길동");
 	cout << person << endl;
+
+	Family family;
+	family.setName("김철수");
+	family.setRelation("형제");
+	cout << family << endl;
 }
