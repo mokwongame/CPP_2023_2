@@ -119,11 +119,17 @@ inline void CarInfoApp::printMaxSpeedRange(void)
 		m_sedan.setGear(nGear);
 		cout << endl;
 		m_sedan.printMaxSpeed();
+		cout << endl;
+		m_sedan.printMaxRange(hour);
+		cout << endl;
 		break;
 	case 2:
 		m_suv.setGear(nGear);
 		cout << endl;
 		m_suv.printMaxSpeed();
+		cout << endl;
+		m_suv.printMaxRange(hour);
+		cout << endl;
 		break;
 	}
 }

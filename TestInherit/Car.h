@@ -18,6 +18,7 @@ public:
 	void setGear(int nGear) { m_nGear = nGear; }
 
 	void printMaxSpeed(void) const;
+	void printMaxRange(double hour) const;
 
 	// friend: 멤버 X, 내부 프로퍼티에 접근 가능한 메소드; 어떤 메소드든지 friend 선택 가능하지만 operator 중복에만 주로 사용
 	friend std::ostream& operator<<(std::ostream& stream, const Car& vehicle);
@@ -42,7 +43,21 @@ inline void Car::printMaxSpeed(void) const
 	cout << "---------------" << endl;
 	for (const auto& carInfo : m_carInfos)
 	{
-		cout << carInfo.getBrand() << "의 최고 속도 = " << carInfo.getSpeed(m_nGear) << "km/h" << endl;
+		cout << carInfo.getBrand() << "의 최고 속도 = " << carInfo.getSpeed(m_nGear) << " km/h" << endl;
+	}
+	cout << "---------------" << endl;
+}
+
+inline void Car::printMaxRange(double hour) const
+{
+	using namespace std;
+	cout << "[현재 이동 거리]" << endl;
+	cout << "현재 기어 = " << m_nGear << "단" << endl;
+	cout << "---------------" << endl;
+	for (const auto& carInfo : m_carInfos)
+	{
+		// 이동 거리 = 속도*이동 시간
+		cout << carInfo.getBrand() << "의 이동 거리 = " << carInfo.getSpeed(m_nGear) * hour << " km" << endl;
 	}
 	cout << "---------------" << endl;
 }
