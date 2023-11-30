@@ -41,5 +41,8 @@
     <ClInclude Include="CarInfoApp.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="Suv.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

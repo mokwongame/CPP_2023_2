@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include "Sedan.h"
+#include "Suv.h"
 
 #define MENU_MIN	(1)
 #define MENU_MAX	(4)
@@ -16,6 +17,7 @@ public:
 
 private:
 	Sedan m_sedan;
+	Suv m_suv;
 
 	void showMenu(void) const;
 	int inputMenu(void) const;
@@ -33,6 +35,14 @@ inline void CarInfoApp::run(void)
 		{
 		case 1:
 			cout << endl << m_sedan << endl;
+			break;
+		case 2:
+			cout << endl << m_suv << endl;
+			break;
+		case 3:
+			break;
+		case 4:
+			return;
 		}
 	}
 }

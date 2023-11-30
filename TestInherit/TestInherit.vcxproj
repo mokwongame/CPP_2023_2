@@ -152,6 +152,7 @@
     <ClInclude Include="CarInfo.h" />
     <ClInclude Include="CarInfoApp.h" />
     <ClInclude Include="Sedan.h" />
+    <ClInclude Include="Suv.h" />
     <ClInclude Include="Vehicle.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
