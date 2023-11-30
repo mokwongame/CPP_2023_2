@@ -1,4 +1,4 @@
 chcp 65001
 git add --all
-git commit -m "TestVirtual 프로젝트 추가"
+git commit -m "CarInfo에서 cin 버그 수정"
 git push -u origin master
