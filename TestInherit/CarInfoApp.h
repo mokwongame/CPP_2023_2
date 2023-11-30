@@ -22,6 +22,8 @@ private:
 	void showMenu(void) const;
 	int inputMenu(void) const;
 	int inputInt(int nMin, int nMax) const;
+	double inputDouble(void) const;
+	void printMaxSpeedRange(void); // 내부 코드에서 프로퍼티를 바꾸기 때문에 함수 선언 마지막에 const를 쓸 수 없음
 };
 
 inline void CarInfoApp::run(void)
@@ -40,6 +42,7 @@ inline void CarInfoApp::run(void)
 			cout << endl << m_suv << endl;
 			break;
 		case 3:
+			printMaxSpeedRange();
 			break;
 		case 4:
 			return;
@@ -82,4 +85,45 @@ inline int CarInfoApp::inputInt(int nMin, int nMax) const
 		cin >> nInput;
 	}
 	return nInput;
+}
+
+inline double CarInfoApp::inputDouble(void) const
+{
+	using namespace std;
+	double x = 0.;
+	cin >> x;
+	while (!cin)
+	{
+		cin.clear();
+		cin.ignore(10000, '\n');
+		cout << "다시 입력하세요: ";
+		cin >> x;
+	}
+	return x;
+}
+
+inline void CarInfoApp::printMaxSpeedRange(void)
+{
+	using namespace std;
+	cout << endl << "1. Sedan, 2: SUV" << endl;
+	cout << "차량 종류를 선택하세요: ";
+	int nCar = inputInt(1, 2);
+	cout << endl << "기어(1~4)를 선택하세요: ";
+	int nGear = inputInt(1, 4);
+	cout << endl << "이동 시간(단위: 시)을 선택하세요: ";
+	double hour = inputDouble();
+
+	switch (nCar)
+	{
+	case 1:
+		m_sedan.setGear(nGear);
+		cout << endl;
+		m_sedan.printMaxSpeed();
+		break;
+	case 2:
+		m_suv.setGear(nGear);
+		cout << endl;
+		m_suv.printMaxSpeed();
+		break;
+	}
 }
