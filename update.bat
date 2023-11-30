@@ -1,4 +1,4 @@
 chcp 65001
 git add --all
-git commit -m "기어별 이동 거리 계산"
+git commit -m "ZooQuizGame 프로젝트 추가"
 git push -u origin master
