@@ -139,7 +139,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="CarInfo.cpp" />
+    <ClCompile Include="CarInfo.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="CarInfoApp.cpp" />
     <ClCompile Include="TestInherit.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>
@@ -147,6 +150,7 @@
   <ItemGroup>
     <ClInclude Include="Car.h" />
     <ClInclude Include="CarInfo.h" />
+    <ClInclude Include="CarInfoApp.h" />
     <ClInclude Include="Sedan.h" />
     <ClInclude Include="Vehicle.h" />
   </ItemGroup>
