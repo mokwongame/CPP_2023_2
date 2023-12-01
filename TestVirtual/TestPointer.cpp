@@ -14,6 +14,8 @@ int main()
 	ptr = new Line(PointD(1., 2.), PointD(3., 4.)); // upcasting(자식 -> 부모로 변환)
 	cout << "line len = " << ptr->getLen() << endl;
 	cout << "line area = " << ptr->getArea() << endl;
+	ptr->checkPt(PointD(2., 5.));
+	ptr->checkPt(PointD(-2., 5.));
 	delete ptr;
 
 	// 변수명은 ptr로 같지만, 이번에는 Circle 속성을 가짐
@@ -21,4 +23,6 @@ int main()
 	cout << "circle len = " << ptr->getLen() << endl;
 	cout << "circle area = " << ptr->getArea() << endl;
 	delete ptr;
+
+	// Rect 결과물 제시
 }
