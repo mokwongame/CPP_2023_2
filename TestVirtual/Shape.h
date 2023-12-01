@@ -1,6 +1,8 @@
 #pragma once
 
-#include "Point.h"
+#include "Point_template.h"
+
+typedef Point<double> PointD; // Point<double> 대신 별명으로 PointD를 사용
 
 class Shape
 {
@@ -10,21 +12,29 @@ public:
 	{
 		m_pt.setPt(x, y);
 	}
-	Shape(const Point& pt)
+	Shape(const PointD& pt)
 	{
 		m_pt = pt;
 	}
 
-	Point getPt(void) const { return m_pt; }
+	PointD getPt(void) const { return m_pt; }
 	// 메소드 정의 앞에 virtual을 쓰면 가상 함수가 됨
 	virtual void move(double dx, double dy)
 	{
-		Point pt(m_pt.getX() + dx, m_pt.getY() + dy);
+		PointD pt(m_pt.getX() + dx, m_pt.getY() + dy);
 		m_pt = pt;
 	}
+	double getLen(void) const
+	{
+		return 0.;
+	}
+	double getArea(void) const
+	{
+		return 0.;
+	}
 
-private:
-	Point m_pt;
+protected:
+	PointD m_pt;
 };
 
 inline std::ostream& operator<<(std::ostream& stream, const Shape& shape)

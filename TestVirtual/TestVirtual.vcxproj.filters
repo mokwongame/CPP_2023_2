@@ -29,5 +29,11 @@
     <ClInclude Include="Point_template.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="Line.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Circle.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
