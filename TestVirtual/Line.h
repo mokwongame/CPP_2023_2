@@ -15,7 +15,7 @@ public:
 	}
 
 	// 부모와 자식 클래스의 함수 선언이 동일: 메소드 재정의(override)
-	double getLen(void) const
+	virtual double getLen(void) const
 	{
 		double dx = m_pt2.getX() - m_pt.getX();
 		double dy = m_pt2.getY() - m_pt.getY();

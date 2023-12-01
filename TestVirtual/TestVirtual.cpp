@@ -26,4 +26,8 @@ int main()
 	Line line(PointD(1., 2.), PointD(3., 4.));
 	cout << "line len = " << line.getLen() << endl;
 	cout << "line area = " << line.getArea() << endl;
+
+	Circle circle(PointD(-5.4, 6.7), 2.4);
+	cout << "circle len = " << circle.getLen() << endl;
+	cout << "circle area = " << circle.getArea() << endl;
 }

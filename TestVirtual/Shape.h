@@ -24,17 +24,24 @@ public:
 		PointD pt(m_pt.getX() + dx, m_pt.getY() + dy);
 		m_pt = pt;
 	}
-	double getLen(void) const
+	// 메소드 정의 앞에 virtual을 붙이면 가상 함수가 됨
+	virtual double getLen(void) const
 	{
 		return 0.;
 	}
-	double getArea(void) const
+	virtual double getArea(void) const
 	{
 		return 0.;
 	}
 
 protected:
 	PointD m_pt;
+	// x가 아래 값을 벗어나면 예외 처리
+	double m_xmin = 0.;
+	double m_xmax = 10.;
+	// y가 아래 값을 벗어나면 예외 처리
+	double m_ymin = 0.;
+	double m_ymax = 10.;
 };
 
 inline std::ostream& operator<<(std::ostream& stream, const Shape& shape)
