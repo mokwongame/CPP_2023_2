@@ -2,16 +2,19 @@
 //
 
 #include <iostream>
-#include "Point.h"
-#include "Shape.h"
+#include "Point_template.h"
+//#include "Shape.h"
 
 int main()
 {
 	using namespace std;
-	Point pt(1., 2.);
+	Point<double> pt(1.5, 2.3);
 	cout << "(x, y) = " << pt << endl;
 
-	Shape shape(3.4, 5.6);
-	shape.move(-1., -5);
-	cout << "shape = " << shape << endl;
+	Point<int> pt2(2, -5);
+	cout << "(x, y) = " << pt2 << endl;
+
+	//Shape shape(3.4, 5.6);
+	//shape.move(-1., -5);
+	//cout << "shape = " << shape << endl;
 }

@@ -1,4 +1,4 @@
 chcp 65001
 git add --all
-git commit -m "ZooQuizGame 프로젝트 추가"
+git commit -m "Point 클래스를 템플릿으로 변경"
 git push -u origin master
