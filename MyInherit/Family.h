@@ -26,3 +26,11 @@ private:
 protected:
 	std::string m_home;	// 집 위치
 };
+
+std::ostream& operator<<(std::ostream& stream, const Family& family)
+{
+	using namespace std;
+	stream << Person(family) << endl;
+	stream << "관계 = " << family.getRelation();
+	return stream;
+}
