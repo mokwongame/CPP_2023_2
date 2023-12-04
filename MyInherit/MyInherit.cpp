@@ -5,6 +5,11 @@
 - 사람들 분류: 가족(Family), 친구(Friend), 동료(Peer) -> Person을 상속 받아서 생성
 - 분류된 사람들의 공통 특성을 부모 클래스(Person)
 - 명함을 파일에 저장
+
+Family, Friend, Peer 클래스를 완성하여 모니터 및 파일로 출력
+ - Family: 집 추가
+ - Friend: 취미 추가
+ - Peer: 업무 추가
 */
 #include <iostream>
 #include <fstream>
