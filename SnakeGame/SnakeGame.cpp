@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include "Wall.h"
+#include "Fruit.h"
 
 /* [스네이크 게임]
 * 구성 요소: Wall, Snake, Fruit -> 객체(class) 구성
@@ -14,6 +15,8 @@ int main()
 	using namespace std;
 	using namespace mglib;
 
+	randseed();
+
 	Point2 pt1(1, 2);
 	cout << pt1 << endl;
 	pt1.move(10, -5);
@@ -23,6 +26,14 @@ int main()
 	wall.setRect(Point2(0, 2), Point2(50, 22));
 	wall.setShape('=', BLUE, YELLOW);
 	wall.draw();
+
+	int x = randrange(1, 50); // 1, 2, ..., 49
+	int y = randrange(3, 22); // 3, 4, 5, ..., 21
+
+	Fruit fruit;
+	fruit.setPt(Point2(x, y));
+	fruit.setShape('O', RED, YELLOW);
+	fruit.draw();
 
 	while (1) {}
 }

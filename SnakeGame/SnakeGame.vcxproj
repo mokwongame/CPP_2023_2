@@ -130,6 +130,7 @@
     <ClCompile Include="SnakeGame.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Fruit.h" />
     <ClInclude Include="Point2.h" />
     <ClInclude Include="Wall.h" />
   </ItemGroup>

@@ -26,5 +26,8 @@
     <ClInclude Include="Point2.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="Fruit.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
