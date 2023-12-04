@@ -132,6 +132,7 @@
   <ItemGroup>
     <ClInclude Include="Family.h" />
     <ClInclude Include="Friend.h" />
+    <ClInclude Include="Peer.h" />
     <ClInclude Include="Person.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

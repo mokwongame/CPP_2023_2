@@ -24,7 +24,7 @@ private:
 	std::string m_relation; // 가족 관계
 
 protected:
-	std::string m_home;	// 집 위치
+	std::string m_home;	// 집
 };
 
 std::ostream& operator<<(std::ostream& stream, const Family& family)

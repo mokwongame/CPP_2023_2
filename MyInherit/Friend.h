@@ -16,7 +16,7 @@ public:
 
 private:
 	std::string m_school;
-	std::string m_hobby;
+	std::string m_hobby; // √ÎπÃ
 };
 
 std::ostream& operator<<(std::ostream& stream, const Friend& buddy)
