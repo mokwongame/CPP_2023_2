@@ -21,6 +21,7 @@ public:
 	}
 
 	void draw(void);
+	bool isHit(const Point2& pt);
 
 private:
 	Point2 m_pt;
@@ -36,4 +37,9 @@ inline void Fruit::draw(void)
 	gotoxy(m_pt.getX(), m_pt.getY());
 	cout << m_shape;
 	setbacktextcol(BLACK, WHITE);
+}
+
+inline bool Fruit::isHit(const Point2& pt)
+{
+	return (pt.getX() == m_pt.getX()) && (pt.getY() == m_pt.getY());
 }

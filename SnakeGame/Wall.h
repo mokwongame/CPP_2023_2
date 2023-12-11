@@ -24,6 +24,7 @@ public:
 	}
 
 	void draw(void);
+	bool isHit(const Point2& pt);
 
 private:
 	Point2 m_pt1, m_pt2; // m_pt1: 좌측 상단, m_pt2: 우측 하단
@@ -57,4 +58,9 @@ inline void Wall::draw(void)
 		cout << m_shape;
 	}
 	setbacktextcol(BLACK, WHITE);
+}
+
+inline bool Wall::isHit(const Point2& pt)
+{
+	return (pt.getX() <= m_pt1.getX()) || (pt.getX() >= m_pt2.getX()) || (pt.getY() <= m_pt1.getY()) || (pt.getY() >= m_pt2.getY());
 }

@@ -50,11 +50,39 @@ int main()
 	{
 		// 사용자 입력
 		SnakeDirType nDir;
-		nDir = SnakeDirType::SDT_RIGHT;
-		snake.setDir(nDir);
+		if (_kbhit()) // 키보드가 눌러졌는지 확인(keyboard hit)
+		{
+			int key = getkey();
+			switch (key)
+			{
+			case 'a': case IK_LEFT:
+				nDir = SnakeDirType::SDT_LEFT;
+				break;
+			case 'd': case IK_RIGHT:
+				nDir = SnakeDirType::SDT_RIGHT;
+				break;
+			case 'w': case IK_UP:
+				nDir = SnakeDirType::SDT_UP;
+				break;
+			case 's': case IK_DOWN:
+				nDir = SnakeDirType::SDT_DOWN;
+				break;
+			}
+			snake.setDir(nDir);
+		}
 		// snake 이동
 		snake.move();
+		if (wall.isHit(snake.getPt()))
+		{
+			cout << endl << "Game Over!" << endl;
+			break;
+		}
+		else if (fruit.isHit(snake.getPt()))
+		{
+			cout << endl << "득점" << endl;
+			break;
+		}
 		// 잠시 정지
-		::Sleep(250); // 단위: msec; :: 의미 - 글로벌 네임스페이스(전역 함수, 전역 멤버)
+		::Sleep(200); // 단위: msec; :: 의미 - 글로벌 네임스페이스(전역 함수, 전역 멤버)
 	}
 }

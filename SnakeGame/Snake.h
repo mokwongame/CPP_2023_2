@@ -15,6 +15,10 @@ public:
 	Snake(void) {}
 	~Snake() {}
 
+	Point2 getPt(void) const
+	{
+		return m_pt;
+	}
 	void setPt(const Point2& pt)
 	{
 		m_pt = pt;
