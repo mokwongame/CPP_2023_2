@@ -2,8 +2,10 @@
 //
 
 #include <iostream>
+#include <Windows.h> // Sleep이 선언된 운영 체제 함수를 위한 헤더 파일
 #include "Wall.h"
 #include "Fruit.h"
+#include "Snake.h"
 
 /* [스네이크 게임]
 * 구성 요소: Wall, Snake, Fruit -> 객체(class) 구성
@@ -35,5 +37,24 @@ int main()
 	fruit.setShape('O', RED, YELLOW);
 	fruit.draw();
 
-	while (1) {}
+	x = randrange(1, 50); // 1, 2, ..., 49
+	y = randrange(3, 22); // 3, 4, 5, ..., 21
+
+	Snake snake;
+	snake.setPt(Point2(x, y));
+	snake.setShape('>', GREEN, BLUE);
+	snake.draw();
+
+	// 프레임 업데이트
+	while (1)
+	{
+		// 사용자 입력
+		SnakeDirType nDir;
+		nDir = SnakeDirType::SDT_RIGHT;
+		snake.setDir(nDir);
+		// snake 이동
+		snake.move();
+		// 잠시 정지
+		::Sleep(250); // 단위: msec; :: 의미 - 글로벌 네임스페이스(전역 함수, 전역 멤버)
+	}
 }
