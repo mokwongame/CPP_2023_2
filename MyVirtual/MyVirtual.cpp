@@ -9,5 +9,14 @@ int main()
 {
 	using namespace std;
 	Point3 pt1(1, 3);
+	pt1.move(5, 5);
 	cout << pt1 << endl;
+
+	// 부모 클래스는 자식 클래스를 모두 아우를 수 있음(수학: 부모는 자식의 부분 집합); 왜냐하면 자식 클래스는 부모 클래스를 상속 받았기 때문
+	Point2* ptr = new Point3; // ptr: Point2의 포인터; Point3의 포인터를 ptr에 저장
+	ptr->move(3, 5);
+	cout << *ptr << endl;
+	delete ptr;
+	ptr = new Point2;
+	delete ptr;
 }

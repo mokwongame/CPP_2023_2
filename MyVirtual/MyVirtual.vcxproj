@@ -127,10 +127,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="MyVirtual.cpp" />
+    <ClCompile Include="MyVirtual.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="TestTemplate.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Point2.h" />
+    <ClInclude Include="Point2Template.h" />
     <ClInclude Include="Point3.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -29,7 +29,7 @@ public:
 		m_x = pt.m_x, m_y = pt.m_y;
 	}
 
-	void move(int dx, int dy);
+	virtual void move(int dx, int dy); // 메소드 선언 앞에 virtual을 쓰면 가상 함수가 됨
 
 private:
 	int m_x = 0, m_y = 0;
@@ -37,6 +37,7 @@ private:
 
 inline void Point2::move(int dx, int dy)
 {
+	std::cout << "Point2의 move" << std::endl;
 	m_x += dx;
 	m_y += dy;
 }
