@@ -9,6 +9,6 @@
 int main()
 {
 	using namespace std;
-	Life panda("판다", LifeType::LT_ANIMAL, "Ailuropoda melanoleuca", "곰과", "중국 사천성");
+	Animal panda("판다", LifeType::LT_ANIMAL, "Ailuropoda melanoleuca", "곰과", "중국 사천성");
 	cout << panda << endl;
 }
