@@ -12,7 +12,7 @@ public:
 	bool isPet(void) const { return m_bPet; }
 	std::string getVoice(void) const { return m_voice; }
 
-private:
+protected:
 	std::string m_food;
 	bool m_bPet = false;
 	std::string m_voice;
