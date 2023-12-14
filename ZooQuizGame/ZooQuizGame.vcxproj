@@ -139,13 +139,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="ZooQuizGame.cpp" />
+    <ClCompile Include="PlayGame.cpp" />
+    <ClCompile Include="ZooQuizGame.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animal.h" />
     <ClInclude Include="Life.h" />
     <ClInclude Include="Panda.h" />
     <ClInclude Include="Plant.h" />
+    <ClInclude Include="ZooQuizGame.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
