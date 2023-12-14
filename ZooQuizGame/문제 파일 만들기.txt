@@ -1,0 +1,2 @@
+메모장에서 "다른 이름으로 저장"
+ - 인코딩 변경: UFT-8(Unicode, wide char) -> ANSI(ASCII의 확장인 multibyte char)
